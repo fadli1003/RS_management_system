@@ -14,7 +14,7 @@ return new class extends Migration
     {
         Schema::create('services', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(User::class, 'department_id')->constrained()->onDelete('cascade');
+            $table->foreignIdFor(User::class, 'departement_id')->constrained()->onDelete('cascade');
             $table->string('name');
             $table->float('charge');
             $table->float('doctor_commission');

@@ -13,7 +13,7 @@ return new class extends Migration
   {
     Schema::create('beds', function (Blueprint $table) {
       $table->id();
-      $table->foreignId('department_id')->constrained()->cascadeOnDelete();
+      $table->foreignId('departement_id')->constrained()->cascadeOnDelete();
       $table->string('code');
       $table->string('status');
       $table->string('notes');

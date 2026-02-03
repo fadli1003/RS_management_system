@@ -12,9 +12,9 @@ return new class extends Migration
    */
   public function up(): void
   {
-    Schema::create('department_user', function (Blueprint $table) {
+    Schema::create('departement_user', function (Blueprint $table) {
       $table->bigIncrements('id');
-      $table->foreignId('department_id')
+      $table->foreignId('departement_id')
             ->constrained()->references('users')->cascadeOnDelete();
       $table->foreignId('user_id')
             ->constrained()->references('users')->cascadeOnDelete();
@@ -27,6 +27,6 @@ return new class extends Migration
    */
   public function down(): void
   {
-    Schema::dropIfExists('department_user');
+    Schema::dropIfExists('departement_user');
   }
 };
