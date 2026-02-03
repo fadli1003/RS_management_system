@@ -12,10 +12,12 @@ return new class extends Migration
    */
   public function up(): void
   {
-    Schema::create('patient_services', function (Blueprint $table) {
-      $table->id();
-      $table->foreignIdFor(User::class, 'patient_id')->constrained()->cascadeOnDelete();
-      $table->foreignId('service_id')->references('services')->cascadeOnDelete();
+    Schema::create('department_user', function (Blueprint $table) {
+      $table->bigIncrements('id');
+      $table->foreignId('department_id')
+            ->constrained()->references('users')->cascadeOnDelete();
+      $table->foreignId('user_id')
+            ->constrained()->references('users')->cascadeOnDelete();
       $table->timestamps();
     });
   }
@@ -25,6 +27,6 @@ return new class extends Migration
    */
   public function down(): void
   {
-    Schema::dropIfExists('patient_services');
+    Schema::dropIfExists('department_user');
   }
 };

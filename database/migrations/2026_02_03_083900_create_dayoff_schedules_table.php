@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('dayoff_schedules', function (Blueprint $table) {
             $table->id();
+            $table->date('date');
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }

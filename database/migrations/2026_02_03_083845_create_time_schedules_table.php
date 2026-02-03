@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('time_schedules', function (Blueprint $table) {
             $table->id();
+            $table->string('week_day');
+            $table->integer('week_num');
+            $table->time('start_time');
+            $table->time('end_time');
+            $table->string('duration')->nullable();
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }

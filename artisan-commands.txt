@@ -1,0 +1,80 @@
+#models -mcrR
+pa make:model Departement -mcrRf
+sleep(1)
+pa make:model TimeSchedule -mcrRf
+sleep(1)
+pa make:model Appointment -mcrRf
+sleep(1)
+pa make:model CaseHistory -mcrRf
+sleep(1)
+pa make:model Document -mcrRf
+sleep(1)
+pa make:model Prescription -mcrRf
+sleep(1)
+pa make:model Medicine -mcrRf
+sleep(1)
+pa make:model Service -mcrRf
+sleep(1)
+pa make:model PatientService -mcrRf
+sleep(1)
+pa make:model DayoffSchedule -mcrRf
+sleep(1)
+pa make:model ServicePackage -mcrRf
+sleep(1)
+
+pa make:migration ServiceServicePackage
+sleep(1)
+pa make:migration MedicinePresceription
+sleep(1)
+
+pa make:model Bed -mcrRf
+sleep(1)
+pa make:model BedAllotment -mcrRf
+sleep(1)
+pa make:model Lap -mcrRf
+sleep(1)
+pa make:model LapReport -mcrRf
+sleep(1)
+pa make:model Payment -mcrRf
+sleep(1)
+pa make:model PaymentItem -mcrRf
+sleep(1)
+pa make:model Invoices -mcrRf
+sleep(1)
+
+pa make:migration PaymentPaymentItem
+sleep(1)
+
+pa make:model MedicineCategory -mcrRf
+sleep(1)
+pa make:model Expense -mcrRf
+sleep(1)
+pa make:model Finance -mcrRf
+sleep(1)
+pa make:model Donor -mcrRf
+sleep(1)
+pa make:model BloodDonor -mcrRf
+sleep(1)
+
+pa make:migration DepartementUser
+
+#factory
+pa make:factory AppointmentFactory
+pa make:factory BedAllotmentFactory
+pa make:factory BedFactory
+pa make:factory BloodBankFactory
+pa make:factory CaseHistoryFactory
+pa make:factory DayoffScheduleFactory
+pa make:factory DepartmentFactory
+pa make:factory DocumentFactory
+pa make:factory DonorFactory
+pa make:factory ExpenseFactory
+pa make:factory FinanceFactory
+pa make:factory LapReportFactory
+pa make:factory LapTemplateFactory
+pa make:factory MedicineCategoryFactory
+pa make:factory MedicineFactory
+pa make:factory PaymentFactory
+pa make:factory PaymentItemFactory
+pa make:factory PrescriptionFactory
+pa make:factory TimeScheduleFactory
