@@ -25,7 +25,7 @@ class AppointmentFactory extends Factory
       'date' => fake()->dateTimeBetween('-1 years', '+1 years'),
       'time' => fake()->time(),
       'status' => Arr::random($array),
-      'notes' => fake()->sentence,
+      'notes' => fake()->sentence(),
     ];
   }
 }

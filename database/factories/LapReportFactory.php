@@ -22,7 +22,7 @@ class LapReportFactory extends Factory
       'patient_id' => fake()->numberBetween(1, 10),
       'doctor_id' => fake()->numberBetween(1, 10),
       'template_id' => fake()->numberBetween(1, 10),
-      'report' => fake()->text,
+      'report' => fake()->text(),
     ];
   }
 }

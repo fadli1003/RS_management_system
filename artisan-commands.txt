@@ -22,9 +22,9 @@ sleep(1)
 pa make:model ServicePackage -mcrRf
 sleep(1)
 
-pa make:migration ServiceServicePackage
+pa make:migration CreateServiceServicePackageTable
 sleep(1)
-pa make:migration MedicinePresceription
+pa make:migration CreateMedicinePresceriptionTable
 sleep(1)
 
 pa make:model Bed -mcrRf
@@ -42,7 +42,7 @@ sleep(1)
 pa make:model Invoices -mcrRf
 sleep(1)
 
-pa make:migration PaymentPaymentItem
+pa make:migration CreatePaymentPaymentItemTable
 sleep(1)
 
 pa make:model MedicineCategory -mcrRf

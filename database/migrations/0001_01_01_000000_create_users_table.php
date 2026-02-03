@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\UserRole;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,7 +14,8 @@ return new class extends Migration
   {
     Schema::create('users', function (Blueprint $table) {
       $table->id();
-      $table->enum('role', ['admin', 'patient', 'doctor', 'perawat', 'staff'])->default('patient');
+      // $table->enum('role', ['admin', 'patient', 'doctor', 'nurse', 'staff'])->default('patient');
+      $table->enum('role', UserRole::cases())->default(UserRole::patient);
       $table->string('first_name');
       $table->string('last_name');
       $table->string('national_id')->nullable();
@@ -23,7 +25,9 @@ return new class extends Migration
       $table->string('picture')->nullable();
       $table->date('birth_date')->nullable();
       $table->enum('gender', ['male', 'female'])->nullable();
-      $table->unsignedInteger('phone')->nullable();
+      //need to evaluate
+      $table->string('phone')->nullable();
+
       $table->bigInteger('mobile')->nullable();
       $table->bigInteger('emergency')->nullable();
       $table->string('type');

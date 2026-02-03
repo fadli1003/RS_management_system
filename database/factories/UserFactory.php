@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Enums\UserRole;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Hash;
@@ -32,20 +33,20 @@ class UserFactory extends Factory
     //     'remember_token' => Str::random(10),
     // ];
 
-    $array = ['admin', 'doctor', 'patient', 'nurse', 'accountant', 'pharmacist', 'laboratorist', 'receptionist'];
+    // $array = ['admin', 'doctor', 'patient', 'nurse', 'accountant', 'pharmacist', 'laboratorist', 'receptionist'];
     return [
       'first_name' => fake()->name(),
-      'last_name' => fake()->name,
+      'last_name' => fake()->name(),
       'national_id' => fake()->numberBetween(10000000000000, 99999999999999),
-      'address' => fake()->streetAddress,
-      'email' => fake()->unique()->safeEmail,
-      'password' => \Illuminate\Support\Facades\Hash::make(fake()->password),
+      'address' => fake()->streetAddress(),
+      'email' => fake()->unique()->safeEmail(),
+      'password' => static::$password ??= Hash::make('password'),
       'picture' => 'https://picsum.photos/id/' . fake()->numberBetween(1, 999) . '/200/200',
-      'blood_group' => 'O+',
-      'birth_date' => fake()->dateTime,
-      'gender' => 'male',
-      'type' => Arr::random($array),
-      'phone' => fake()->numberBetween(1000000000, 9999999999),
+      'blood_group' => fake()->randomElement(['O+', 'O', 'A', 'A+', 'AB', 'AB+', 'B', 'B+']),
+      'birth_date' => fake()->dateTime(),
+      'gender' => fake()->randomElement(['male', 'female']),
+      'role' => Arr::random(UserRole::cases()),
+      'phone' => fake()->unique()->phoneNumber(),
       'mobile' => fake()->numberBetween(1000000000, 9999999999),
       'emergency' => fake()->numberBetween(1000000000, 9999999999),
     ];

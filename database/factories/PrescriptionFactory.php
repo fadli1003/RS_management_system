@@ -20,10 +20,10 @@ class PrescriptionFactory extends Factory
       'patient_id' => fake()->numberBetween(1, 10),
       'doctor_id' => fake()->numberBetween(1, 10),
       'blood_pressure' => fake()->numberBetween(80, 200) . '/' . fake()->numberBetween(80, 200),
-      'diabetes' => fake()->sentence,
-      'symptoms' => fake()->sentence,
-      'diagnosis' => fake()->sentence,
-      'advice' => fake()->sentence,
+      'diabetes' => fake()->sentence(),
+      'symptoms' => fake()->sentence(),
+      'diagnosis' => fake()->sentence(),
+      'advice' => fake()->sentence(),
       'date' => fake()->date(),
     ];
   }

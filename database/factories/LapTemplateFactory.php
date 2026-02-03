@@ -17,8 +17,8 @@ class LapTemplateFactory extends Factory
   public function definition(): array
   {
     return [
-      'name' => fake()->name,
-      'template' => fake()->text,
+      'name' => fake()->name(),
+      'template' => fake()->text(),
     ];
   }
 }

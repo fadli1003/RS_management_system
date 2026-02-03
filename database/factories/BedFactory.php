@@ -20,7 +20,7 @@ class BedFactory extends Factory
       'department_id' => fake()->numberBetween(1, 10),
       'code' => 'Bed' . fake()->numberBetween(1, 10),
       'status' => 'available',
-      'notes' => fake()->sentence,
+      'notes' => fake()->sentence(),
     ];
   }
 }
