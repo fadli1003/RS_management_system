@@ -1,0 +1,33 @@
+pa make:model Departement -mcrR
+pa make:model TimeSchedule -mcrR
+pa make:model Appointment -mcrR
+pa make:model CaseHistory -mcrR
+pa make:model Document -mcrR
+pa make:model Prescription -mcrR
+pa make:model Medicine -mcrR
+pa make:model Service -mcrR
+pa make:model PatientService -mcrR
+pa make:model DayoffSchedule -mcrR
+pa make:model ServicePackage -mcrR
+
+pa make:migration ServiceServicePackage
+
+pa make:migration MedicinePresceription
+
+pa make:model Bed -mcrR
+pa make:model BedAllotment -mcrR
+pa make:model Lap -mcrR
+pa make:model LapReport -mcrR
+pa make:model Payment -mcrR
+pa make:model PaymentItem -mcrR
+pa make:model Invoices -mcrR
+
+pa make:migration PaymentPaymentItem
+
+pa make:model MedicineCategory -mcrR
+pa make:model Expense -mcrR
+pa make:model Finance -mcrR
+pa make:model Donor -mcrR
+pa make:model BloodDonor -mcrR
+
+pa make:migration DepartementUser
