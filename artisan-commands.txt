@@ -56,7 +56,27 @@ sleep(1)
 pa make:model BloodDonor -mcrRf
 sleep(1)
 
-pa make:migration DepartementUser
+pa make:migration CreateDepartementUserRole
+
+
+#views
+pa make:view users.accountants.index
+pa make:view users.accountants.edit
+pa make:view users.accountants.show
+pa make:view users.doctors.index
+pa make:view users.doctors.edit
+pa make:view users.doctors.show
+pa make:view users.patients.index
+pa make:view users.patients.edit
+pa make:view users.patients.show
+pa make:view users.staff.index
+pa make:view users.staff.edit
+pa make:view users.staff.show
+
+pa make:view appointments.index
+pa make:view appointments.edit
+pa make:view appointments.show
+
 
 #factory
 pa make:factory AppointmentFactory
