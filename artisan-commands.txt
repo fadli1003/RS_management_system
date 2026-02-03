@@ -58,24 +58,126 @@ sleep(1)
 
 pa make:migration CreateDepartementUserRole
 
+pa make:controller PublicController
+
 
 #views
-pa make:view users.accountants.index
-pa make:view users.accountants.edit
-pa make:view users.accountants.show
-pa make:view users.doctors.index
-pa make:view users.doctors.edit
-pa make:view users.doctors.show
+//
+pa make:view layout.dashboard
+pa make:view layout.app
+pa make:view layout.partials.header
+pa make:view layout.partials.sidebar
+pa make:view layout.partials.footer
+
+//users
 pa make:view users.patients.index
 pa make:view users.patients.edit
 pa make:view users.patients.show
+
+pa make:view users.doctors.index
+pa make:view users.doctors.edit
+pa make:view users.doctors.show
+
+pa make:view users.nurses.index
+pa make:view users.nurses.edit
+pa make:view users.nurses.show
+
+pa make:view users.laboratorists.index
+pa make:view users.laboratorists.edit
+pa make:view users.laboratorists.show
+
+pa make:view users.parmacists.index
+pa make:view users.parmacists.edit
+pa make:view users.parmacists.show
+
+pa make:view users.accountants.index
+pa make:view users.accountants.edit
+pa make:view users.accountants.show
+
+pa make:view users.recepcionists.index
+pa make:view users.recepcionists.edit
+pa make:view users.recepcionists.show
+
 pa make:view users.staff.index
 pa make:view users.staff.edit
 pa make:view users.staff.show
 
+
+pa make:view departements.index
+pa make:view departements.edit
+pa make:view departements.show
+
 pa make:view appointments.index
 pa make:view appointments.edit
 pa make:view appointments.show
+
+pa make:view bedAllotment.index
+pa make:view bedAllotment.edit
+pa make:view bedAllotment.show
+
+pa make:view bedAllotment.beds.index
+pa make:view bedAllotment.beds.edit
+pa make:view bedAllotment.beds.show
+
+pa make:view caseHistories.index
+pa make:view caseHistories.edit
+pa make:view caseHistories.show
+
+pa make:view timeSchedules.edit
+pa make:view timeSchedules.show
+pa make:view timeSchedules.index
+
+pa make:view timeSchedules.DayoffSchedules.index
+pa make:view timeSchedules.DayoffSchedules.edit
+pa make:view timeSchedules.DayoffSchedules.show
+
+pa make:view documents.index
+pa make:view documents.edit
+pa make:view documents.show
+
+pa make:view financial.index
+pa make:view financial.edit
+pa make:view financial.show
+
+pa make:view financial.expense.index
+pa make:view financial.expense.edit
+pa make:view financial.expense.show
+
+pa make:view financial.payments.index
+pa make:view financial.payments.edit
+pa make:view financial.payments.show
+
+pa make:view financial.paymentItems.index
+pa make:view financial.paymentItems.edit
+pa make:view financial.paymentItems.show
+
+pa make:view lap.lapReports.index
+pa make:view lap.lapReports.edit
+pa make:view lap.lapReports.show
+
+pa make:view lap.lapTemplates.index
+pa make:view lap.lapTemplates.edit
+pa make:view lap.lapTemplates.show
+
+pa make:view medicines.index
+pa make:view medicines.edit
+pa make:view medicines.show
+
+pa make:view medicines.categories.index
+pa make:view medicines.categories.edit
+pa make:view medicines.categories.show
+
+pa make:view prescriptions.index
+pa make:view prescriptions.edit
+pa make:view prescriptions.show
+
+pa make:view servicePackages.index
+pa make:view servicePackages.edit
+pa make:view servicePackages.show
+
+pa make:view services.index
+pa make:view services.edit
+pa make:view services.show
 
 
 #factory

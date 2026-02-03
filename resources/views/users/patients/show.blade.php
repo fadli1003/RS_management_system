@@ -1,3 +1,3 @@
 <div>
-    <!-- Knowing is not enough; we must apply. Being willing is not enough; we must do. - Leonardo da Vinci -->
+    <!-- Be present above all else. - Naval Ravikant -->
 </div>
