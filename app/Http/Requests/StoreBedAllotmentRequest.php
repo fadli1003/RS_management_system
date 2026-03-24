@@ -22,7 +22,12 @@ class StoreBedAllotmentRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+          'bed_id' => 'required|exists:beds,id',
+          'patient_id' => 'required|exists:users,id',
+          'start_date' => 'required|date',
+          'start_time' => 'required|date_format:H:i',
+          'end_date' => 'required|date|after:start_date',
+          'end_time' => 'required|date_format:H:i|after:start_time'
         ];
     }
 }
