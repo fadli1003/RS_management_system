@@ -4,6 +4,7 @@ namespace App\Enums;
 
 enum UserRole : string
 {
+  use HasValues;
   case admin = 'admin';
   case doctor = 'doctor';
   case patient = 'patient';

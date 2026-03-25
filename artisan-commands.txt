@@ -179,6 +179,9 @@ pa make:view services.index
 pa make:view services.edit
 pa make:view services.show
 
+pa make:view caseHistories.index
+pa make:view caseHistories.edit
+pa make:view caseHistories.show
 
 #factory
 pa make:factory AppointmentFactory

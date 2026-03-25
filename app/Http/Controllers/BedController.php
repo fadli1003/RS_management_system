@@ -13,7 +13,9 @@ class BedController extends Controller
      */
     public function index()
     {
-        //
+      return view('bedAllotment.beds.index', [
+        'beds' => Bed::all()
+      ]);
     }
 
     /**
@@ -21,7 +23,9 @@ class BedController extends Controller
      */
     public function create()
     {
-        //
+      return view('bedAllotment.beds.index', [
+        'beds' => Bed::all()
+      ]);
     }
 
     /**
@@ -29,7 +33,12 @@ class BedController extends Controller
      */
     public function store(StoreBedRequest $request)
     {
-        //
+      $data = $request->validated();
+
+      Bed::create($data);
+      session()->flash('success', 'Bed added successfully.');
+
+      return redirect()->intended(route('beds.index'));
     }
 
     /**
@@ -37,7 +46,7 @@ class BedController extends Controller
      */
     public function show(Bed $bed)
     {
-        //
+      return view('bedAllotment.beds.show', compact('bed'));
     }
 
     /**
@@ -45,7 +54,7 @@ class BedController extends Controller
      */
     public function edit(Bed $bed)
     {
-        //
+      return view('bedAllotment.beds.edit', compact('bed'));
     }
 
     /**
@@ -53,7 +62,10 @@ class BedController extends Controller
      */
     public function update(UpdateBedRequest $request, Bed $bed)
     {
-        //
+      $data = $request->validated();
+      $bed->update($data);
+      session()->flash('success', 'Bed updated successfully.');
+      return redirect()->intended(route('beds.index'));
     }
 
     /**
@@ -61,6 +73,9 @@ class BedController extends Controller
      */
     public function destroy(Bed $bed)
     {
-        //
+      $bed->delete();
+      session()->flash('success', 'Bed deleted successfully.');
+
+      return redirect()->intended(route('beds.index'));
     }
 }

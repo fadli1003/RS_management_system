@@ -22,7 +22,25 @@ class StoreCaseHistoryRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'patient_id' => 'required|exists:users,id',
+            'date' => 'required|date',
+            'title' => 'required|string|max:50',
+            'food_allergies' => 'required|string',
+            'bleed_tendency' => 'required',
+            'heart_disease' => 'required',
+            'blood_pressure' => 'required',
+            'diabetic' => 'required',
+            'surgery' => 'required',
+            'accident' => 'required|string',
+            'family_medical_history' => 'required',
+            'current_medication' => 'required',
+            'female_pregnancy' => 'required',
+            'breast_feeding' => 'required',
+            'health_insurance' => 'required',
+            'low_income' => 'required',
+            'reference' => 'required',
+            'others' => 'required',
+            'status' => 'required',
         ];
     }
 }

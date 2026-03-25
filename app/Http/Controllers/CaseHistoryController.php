@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\CaseHistory;
 use App\Http\Requests\StoreCaseHistoryRequest;
 use App\Http\Requests\UpdateCaseHistoryRequest;
+use App\Models\User;
 
 class CaseHistoryController extends Controller
 {
@@ -13,7 +14,9 @@ class CaseHistoryController extends Controller
      */
     public function index()
     {
-        //
+      return view('caseHistories.index', [
+        'caseHistories' => CaseHistory::all()
+      ]);
     }
 
     /**
@@ -21,7 +24,10 @@ class CaseHistoryController extends Controller
      */
     public function create()
     {
-        //
+      return view('caseHistories.index', [
+        // 'caseHistories' => CaseHistory::all(),
+        'patients' => User::patient()->get()
+      ]);
     }
 
     /**
@@ -29,7 +35,11 @@ class CaseHistoryController extends Controller
      */
     public function store(StoreCaseHistoryRequest $request)
     {
-        //
+      $data = $request->validated();
+      CaseHistory::create($data);
+      session()->flash('success', 'Case History created successfully.');
+
+      return redirect()->intended(route('caseHistories.index'));
     }
 
     /**
@@ -37,7 +47,9 @@ class CaseHistoryController extends Controller
      */
     public function show(CaseHistory $caseHistory)
     {
-        //
+      return view('caseHistories.show', [
+        'caseHistory' => $caseHistory->with('users')
+      ]);
     }
 
     /**
@@ -45,7 +57,10 @@ class CaseHistoryController extends Controller
      */
     public function edit(CaseHistory $caseHistory)
     {
-        //
+      return view('caseHistories.edit', [
+        'caseHistorie' => $caseHistory->with('users'),
+        'patients' => User::patient()->get()
+      ]);
     }
 
     /**
@@ -53,7 +68,11 @@ class CaseHistoryController extends Controller
      */
     public function update(UpdateCaseHistoryRequest $request, CaseHistory $caseHistory)
     {
-        //
+      $data = $request->validated();
+      $caseHistory->update($data);
+      $patientName = $data['patient-name'];
+      session()->flash('success', $patientName. 'Case History updated successfully.');
+      return redirect()->intended(route('case-histories.index'));
     }
 
     /**
@@ -61,6 +80,8 @@ class CaseHistoryController extends Controller
      */
     public function destroy(CaseHistory $caseHistory)
     {
-        //
+      $caseHistory->delete();
+      session()->flash('success', 'Case History deleted successfully.');
+      return redirect()->intended(route('case-histories.index'));
     }
 }
