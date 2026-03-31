@@ -15,7 +15,7 @@ class CaseHistoryController extends Controller
     public function index()
     {
       return view('caseHistories.index', [
-        'caseHistories' => CaseHistory::all()
+        'caseHistories' => CaseHistory::with('users')->get()
       ]);
     }
 
@@ -70,7 +70,7 @@ class CaseHistoryController extends Controller
     {
       $data = $request->validated();
       $caseHistory->update($data);
-      $patientName = $data['patient-name'];
+      $patientName = $data['patient_name'];
       session()->flash('success', $patientName. 'Case History updated successfully.');
       return redirect()->intended(route('case-histories.index'));
     }
