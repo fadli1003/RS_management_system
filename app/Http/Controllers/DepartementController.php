@@ -8,59 +8,51 @@ use App\Http\Requests\UpdateDepartementRequest;
 
 class DepartementController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
-        //
+      return view('departements.index', [
+        'departements' => Departement::all()
+      ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+      return view('departements.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(StoreDepartementRequest $request)
     {
-        //
+      Departement::create($request->validated());
+      session()->flash('success', 'New Department created successfully.');
+
+      return redirect()->route('departements.index')->status(201);
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(Departement $departement)
     {
-        //
+        return view('departements.index', [
+          'departement' => $departement
+        ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(Departement $departement)
     {
-        //
+      return view('departements.edit', [
+        'department' => $departement
+      ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(UpdateDepartementRequest $request, Departement $departement)
     {
-        //
+      $departement->update($request->validated());
+      return redirect()->route('departements.index')->with(session()->flash('success', 'Department updated successfully.'));
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Departement $departement)
     {
-        //
+      $name = $departement->name;
+      $departement->delete();
+      return back(200)->with(session()->flash('success', 'Department' .$name .'deleted successfully.'));
     }
 }

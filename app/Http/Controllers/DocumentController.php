@@ -8,59 +8,48 @@ use App\Http\Requests\UpdateDocumentRequest;
 
 class DocumentController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+      return view('documents.index', [
+        'docs' => Document::all()
+      ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+      return view('documents.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(StoreDocumentRequest $request)
     {
-        //
+      Document::create($request->validated());
+      session()->flash('success', 'Document created successfully.');
+      return redirect()->back(201);
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(Document $document)
     {
-        //
+      return view('documents.index', [
+        'doc' => $document
+      ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(Document $document)
     {
-        //
+      return view('documents.edit', [
+        'doc' => $document->load('doctor', 'patient')
+      ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(UpdateDocumentRequest $request, Document $document)
     {
-        //
+      $document->update($request->validated());
+      return redirect()->route('documents.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Document $document)
     {
-        //
+      $document->delete();
+      return redirect()->back(200)->with(session()->flash('success', 'Document deleted successfully.'));
     }
 }

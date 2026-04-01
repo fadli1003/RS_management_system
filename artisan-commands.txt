@@ -183,6 +183,7 @@ pa make:view caseHistories.index
 pa make:view caseHistories.edit
 pa make:view caseHistories.show
 
+
 #factory
 pa make:factory AppointmentFactory
 pa make:factory BedAllotmentFactory

@@ -22,7 +22,7 @@ class StoreDayoffScheduleRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+          'user_id'
         ];
     }
 }
