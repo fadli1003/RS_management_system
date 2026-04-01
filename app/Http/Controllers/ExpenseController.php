@@ -8,59 +8,52 @@ use App\Http\Requests\UpdateExpenseRequest;
 
 class ExpenseController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+      return view('financial.expense.index', [
+        'expenses' => Expense::all()
+      ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+      return view('financial.expense.create', [
+        'expenses' => Expense::all()
+      ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(StoreExpenseRequest $request)
     {
-        //
+      Expense::create($request->validated());
+      return redirect()->route('expenses.index')->with(session()->flash('success', 'New Expense created successfully.'));
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(Expense $expense)
     {
-        //
+      return view('financial.expense.index', [
+        'expense' => $expense
+      ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(Expense $expense)
     {
-        //
+      return view('financial.expense.edit', [
+        'expense' => $expense
+      ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(UpdateExpenseRequest $request, Expense $expense)
     {
-        //
+      $expense->update($request->validated());
+
+      return redirect()->route('expenses.index')->with(session()->flash('success', 'Expense information updated successfully.'));
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Expense $expense)
     {
-        //
+      $expense->delete();
+      session()->flash('success', 'Expense info deleted successfully.');
+
+      return redirect()->intended(route('expenses.index'));
     }
 }

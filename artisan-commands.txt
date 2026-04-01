@@ -183,6 +183,10 @@ pa make:view caseHistories.index
 pa make:view caseHistories.edit
 pa make:view caseHistories.show
 
+pa make:view invoices.index
+pa make:view invoices.create
+pa make:view invoices.edit
+
 
 #factory
 pa make:factory AppointmentFactory

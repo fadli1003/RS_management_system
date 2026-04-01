@@ -8,59 +8,41 @@ use App\Http\Requests\UpdateMedicineRequest;
 
 class MedicineController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
+  public function index()
+  {
+    return view('medicines.index', ['medicines' => Medicine::all()]);
+  }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
+  public function create()
+  {
+    return view('medicines.create');
+  }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StoreMedicineRequest $request)
-    {
-        //
-    }
+  public function store(StoreMedicineRequest $request)
+  {
+    Medicine::create($request->validated());
+    return redirect()->route('medicines.index')->with(session()->flash('success', 'New Medicine created successfully.'));
+  }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Medicine $medicine)
-    {
-        //
-    }
+  public function show(Medicine $medicine)
+  {
+    return view('medicines.index', compact('medicine'));
+  }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Medicine $medicine)
-    {
-        //
-    }
+  public function edit(Medicine $medicine)
+  {
+    return view('medicines.edit', compact('medicine'));
+  }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateMedicineRequest $request, Medicine $medicine)
-    {
-        //
-    }
+  public function update(UpdateMedicineRequest $request, Medicine $medicine)
+  {
+    $medicine->update($request->validated());
+    return redirect()->route('medicines.index')->with('success', 'Medicine updated successfully.');
+  }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Medicine $medicine)
-    {
-        //
-    }
+  public function destroy(Medicine $medicine)
+  {
+    $medicine->delete();
+    session()->flash('success', 'Medicine deleted successfully');
+  }
 }

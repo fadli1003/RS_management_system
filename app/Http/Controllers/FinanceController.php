@@ -8,59 +8,44 @@ use App\Http\Requests\UpdateFinanceRequest;
 
 class FinanceController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
+  public function index()
+  {
+    return view('financial.index', [
+      'finances' => Finance::all()
+    ]);
+  }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
+  public function create()
+  {
+    return view('financial.create');
+  }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StoreFinanceRequest $request)
-    {
-        //
-    }
+  public function store(StoreFinanceRequest $request)
+  {
+    Finance::create($request->validated());
+    return redirect()->intended()->with(session()->flash('success', 'Finance created successfully.'));
+  }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Finance $finance)
-    {
-        //
-    }
+  public function show(Finance $finance)
+  {
+    return view('financial.index', compact('finance'));
+  }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Finance $finance)
-    {
-        //
-    }
+  public function edit(Finance $finance)
+  {
+    return view('financial.edit', compact('finance'));
+  }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateFinanceRequest $request, Finance $finance)
-    {
-        //
-    }
+  public function update(UpdateFinanceRequest $request, Finance $finance)
+  {
+    $finance->update($request->validated());
+    return redirect()->intended(route('finances.index'))->with('success', 'Finance information updated successfully.');
+  }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Finance $finance)
-    {
-        //
-    }
+  public function destroy(Finance $finance)
+  {
+    $finance->delete();
+    session()->flash('success', 'Finance information deleted successfully.');
+    return redirect()->back(200);
+  }
 }

@@ -8,59 +8,41 @@ use App\Http\Requests\UpdateLapRequest;
 
 class LapController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+      return view('lap.lapTemplates.index', ['lapTemplates' => Lap::all()]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+      return view('lap.lapTemplates.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(StoreLapRequest $request)
     {
-        //
+      Lap::create($request->validated());
+      return session('success', 'Lap templates created successfully.');
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(Lap $lap)
     {
-        //
+      return view('lap.lapTemplates.index', compact('lap'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(Lap $lap)
     {
-        //
+      return view('lap.lapTemplates.edit', compact('lap'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(UpdateLapRequest $request, Lap $lap)
     {
-        //
+      $lap->update($request->validated());
+      return redirect()->route('lap-templates.index')->with(session()->flash('success', 'Lap templates updated successfully'));
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Lap $lap)
     {
-        //
+      $lap->delete();
+      session()->flash('success', 'Lap template deleted successfully.');
     }
 }

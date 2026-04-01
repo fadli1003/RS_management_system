@@ -8,59 +8,42 @@ use App\Http\Requests\UpdateLapReportRequest;
 
 class LapReportController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+      return view('lap.lapReports.index', ['lapReports' => LapReport::all()]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+      return view('lap.lapReports.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(StoreLapReportRequest $request)
     {
-        //
+      LapReport::create($request->validated());
+      session()->flash('success', 'Lap report created successfully.');
+      return redirect()->route('lap-reports.index');
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(LapReport $lapReport)
     {
-        //
+      return view('lap.lapReports.index', compact('lapReport'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(LapReport $lapReport)
     {
-        //
+      return view('lap.lapReports.edit', compact('lapReport'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(UpdateLapReportRequest $request, LapReport $lapReport)
     {
-        //
+      $lapReport->update($request->validated());
+      return redirect()->intended(route('lap-reports.index'))->with(session('success', 'Lap report updated successfully.'));
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(LapReport $lapReport)
     {
-        //
+      $lapReport->delete();
+      session()->flash('success', 'Lap Report deleted successfully.');
     }
 }
