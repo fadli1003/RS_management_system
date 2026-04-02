@@ -28,7 +28,7 @@ use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('dashboard');
+    return view('home');
 });
 
 Route::get('allotments-by-date', [BedAllotmentController::class, 'getBedAllotmentByDate'])->name('bedAllotmentsByDate');

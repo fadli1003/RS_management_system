@@ -1,3 +1,7 @@
-<div>
-    <!-- Walk as if you are kissing the Earth with your feet. - Thich Nhat Hanh -->
+@extends('layout.app')
+@section('page-title', 'Appointments')
+@section('section')
+<div class="bg-white">
+  
 </div>
+@endsection

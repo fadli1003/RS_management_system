@@ -12,13 +12,11 @@ use Illuminate\Support\Carbon;
 
 class BedAllotmentController extends Controller
 {
-  /**
-   * Display a listing of the resource.
-   */
   public function index()
   {
     return view('bedAllotment.index')->with('bedAllotments', BedAllotment::all());
   }
+
   public function getBedAllotmentsByDate(Request $request)
   {
     if ($request->start && $request->end) {
@@ -28,6 +26,7 @@ class BedAllotmentController extends Controller
       foreach (BedAllotment::all() as $bedAllotment) {
         $start_date_time = $bedAllotment->start_date . ' ' . $bedAllotment->start_time;
         $end_date_time = $bedAllotment->end_date . ' ' . $bedAllotment->end_time;
+        
         if (Carbon::parse($request->start)->between($start_date_time, $end_date_time) || Carbon::parse($request->end)->between($start_date_time, $end_date_time)) {
           array_push($arr, $bedAllotment->bed_id);
         }
@@ -53,17 +52,11 @@ class BedAllotmentController extends Controller
     return response()->json(['html' => $json]);
   }
 
-  /**
-   * Show the form for creating a new resource.
-   */
   public function create()
   {
     return view('bedAllotments.create')->with('beds', Bed::all())->with('patients', User::patient()->get());
   }
 
-  /**
-   * Store a newly created resource in storage.
-   */
   public function store(StoreBedAllotmentRequest $request)
   {
     $newBed = $request->validated();
@@ -73,17 +66,11 @@ class BedAllotmentController extends Controller
     return redirect()->route('bedAllotment.index');
   }
 
-  /**
-   * Display the specified resource.
-   */
   public function show(BedAllotment $bedAllotment)
   {
     return view('bedAllotment.show')->with('bedAllotment', $bedAllotment);
   }
 
-  /**
-   * Show the form for editing the specified resource.
-   */
   public function edit(BedAllotment $bedAllotment)
   {
     $patient = User::patient()->get();
@@ -91,9 +78,6 @@ class BedAllotmentController extends Controller
     return view('bedAllotment.edit', compact('patient', 'bedAllotment', 'beds'));
   }
 
-  /**
-   * Update the specified resource in storage.
-   */
   public function update(UpdateBedAllotmentRequest $request, BedAllotment $bedAllotment)
   {
     $data = $request->validated();
@@ -103,9 +87,6 @@ class BedAllotmentController extends Controller
     return redirect()->route('bedAllotment.index');
   }
 
-  /**
-   * Remove the specified resource from storage.
-   */
   public function destroy(BedAllotment $bedAllotment)
   {
     $bedAllotment->delete();

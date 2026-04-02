@@ -62,13 +62,15 @@ class AppointmentController extends Controller
       }
     }
 
-    $pending = Appointment::where('status', 'pending')->get();
-    $confirmed = Appointment::where('status', 'confirmed')->get();
-    $cancelled = Appointment::where('status', 'cancelled')->get();
-    $treated = Appointment::where('status', 'treated')->get();
+    $q = Appointment::query();
+
+    $pending = $q->where('status', 'pending')->get();
+    $confirmed = $q->where('status', 'confirmed')->get();
+    $cancelled = $q->where('status', 'cancelled')->get();
+    $treated = $q->where('status', 'treated')->get();
     $appointments = Appointment::all();
 
-    return view('appointments.list', compact('pending', 'confirmed', 'cancelled', 'treated', 'appointments'));
+    return view('appointments.index', compact('pending', 'confirmed', 'cancelled', 'treated', 'appointments'));
   }
 
   public function create()
