@@ -35,8 +35,8 @@ class UserFactory extends Factory
 
     // $array = ['admin', 'doctor', 'patient', 'nurse', 'accountant', 'pharmacist', 'laboratorist', 'receptionist'];
     return [
-      'first_name' => fake()->name(),
-      'last_name' => fake()->name(),
+      'first_name' => fake()->firstName(),
+      'last_name' => fake()->lastName(),
       'national_id' => fake()->numberBetween(10000000000000, 99999999999999),
       'address' => fake()->streetAddress(),
       'email' => fake()->unique()->safeEmail(),
@@ -49,6 +49,7 @@ class UserFactory extends Factory
       'phone' => fake()->unique()->phoneNumber(),
       'mobile' => fake()->numberBetween(1000000000, 9999999999),
       'emergency' => fake()->numberBetween(1000000000, 9999999999),
+      'type' => fake()->randomElement(['inpatient', 'outpatient']),
     ];
   }
 

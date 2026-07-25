@@ -15,7 +15,7 @@ return new class extends Migration
     Schema::create('patient_services', function (Blueprint $table) {
       $table->id();
       $table->foreignIdFor(User::class, 'patient_id')->constrained()->cascadeOnDelete();
-      $table->foreignId('service_id')->references('services')->cascadeOnDelete();
+      $table->foreignId('service_id')->constrained('services')->cascadeOnDelete();
       $table->timestamps();
     });
   }

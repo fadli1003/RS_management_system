@@ -15,8 +15,7 @@ return new class extends Migration
         Schema::create('payment_items', function (Blueprint $table) {
             $table->id();
             $table->foreignId('doctor_id')
-                  ->constrained()
-                  ->references('users')
+                  ->constrained('users')
                   ->cascadeOnDelete()
                   ->nullable();
             $table->string('code');

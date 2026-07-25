@@ -2,9 +2,11 @@
 
 namespace App\Enums;
 
+use App\Enums\Traits\HasValues;
+
 enum UserRole : string
 {
-  use HasValues;
+  // use HasValues;
   case admin = 'admin';
   case doctor = 'doctor';
   case patient = 'patient';

@@ -15,9 +15,9 @@ return new class extends Migration
     Schema::create('departement_user', function (Blueprint $table) {
       $table->bigIncrements('id');
       $table->foreignId('departement_id')
-            ->constrained()->references('users')->cascadeOnDelete();
+            ->constrained()->constrained()->cascadeOnDelete();
       $table->foreignId('user_id')
-            ->constrained()->references('users')->cascadeOnDelete();
+            ->constrained()->constrained()->cascadeOnDelete();
       $table->timestamps();
     });
   }

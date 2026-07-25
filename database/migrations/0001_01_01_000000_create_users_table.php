@@ -30,7 +30,7 @@ return new class extends Migration
 
       $table->bigInteger('mobile')->nullable();
       $table->bigInteger('emergency')->nullable();
-      $table->string('type');
+      // $table->string('type');
       $table->timestamp('email_verified_at')->nullable();
       $table->string('medical_degree')->nullable();
       $table->string('specialist')->nullable();
